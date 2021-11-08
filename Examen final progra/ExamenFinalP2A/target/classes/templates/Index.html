@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+ <!--h1{background-color: violet;}-->
+ <!--p{background-color: white; font-size: 23px;}-->
+<html xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <title>EXAMEN FINAL</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <!-- el diseño de los botones, labesl o titulos etc que se muestran e la interfaz-->
+        <style>
+             body{font-family: Ebrima; 
+                  font-size: 15px; 
+                  text-align: center; 
+                  background-color: lightsteelblue}
+             table{background: white; 
+                   font-size: 14px; }
+             .encabezado{background-color: antiquewhite; 
+                        text-align: center}
+             .enlace {font-family: Ebrima; 
+                      padding: 5px 25px; 
+                      background: #14DF6A; 
+                      border: 1px solid #1161B0; 
+                      color: #fff;
+                      border-radius: 4px;
+                      text-decoration:none; 
+                      border-color: #fff;}
+             #op{background-color: #1C2833; 
+                 font-size: 20px; 
+                 padding: 1.3px 17px;  }
+             
+             #tblpro{height: 270px;margin-bottom: 15px;}
+             #op2{ background-color: #3498DB; }
+             #op3{ background-color: #1C2833 ; padding: 1px 20px;}
+             #op4{ background-color: #3498DB; }
+             #op5{ background-color: #1C2833; padding: 1px 25px;}
+             
+        </style>
+        <img src="https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331256__340.png" width="180" height="150" align="rigth"/></table>
+
+        <h1>REGISTROS DE USUARIOS</h1>
+        <p>USUARIOS REGRISTRADOS️️</p>
+        <table border="0" align = "lefth" >
+                <tr class="encabezado">
+                    <th>Codigo Usuario</th>
+                    <th>Codigo Departamento</th>
+                    <th>Codigo Profesion</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Correo</th>
+                    <th>Telefono</th>
+                    <th>Fecha Nacimiento</th>
+                    <th>Longitud</th>
+                    <th>Latitud</th>
+                    <th>Fecha Ingreso</th>
+                    <th>Modificar</th>
+                    <th>Borrar</th>
+                </tr>
+                <tr th:each="usu : ${usuario}">
+                    <td th:text="${usu.id_usuario}">Mostrar Usuario</td>
+                    <td th:text="${usu.id_depto}">Mostrar departamento</td>
+                    <td th:text="${usu.id_profesion}">Mostrar Profesion</td>
+                    <td th:text="${usu.nombre}">Mostrar Nombre</td>
+                    <td th:text="${usu.apellido}">Mostrar Apellido</td>
+                    <td th:text="${usu.correo_electronico}">Mostrar email</td>
+                    <td th:text="${usu.telefono}">Mostrar Teléfono</td>
+                    <td th:text="${usu.fecha_nacimiento}">Mostrar Fechanacimiento</td>
+                    <td th:text="${usu.longitud}">Mostrar longitud</td>
+                    <td th:text="${usu.latitud}">Mostrar latitud</td>
+                    <td th:text="${usu.fecha_registro}">Mostrar fechaingreso</td>
+                    <td><a th:href="@{/editarU/} +  ${usu.id_usuario}" class="enlace" id="op">Edit</a></td>
+                    <td><a th:href="@{/eliminarU/} +  ${usu.id_usuario}" class="enlace" id="op">Del</a></td>
+                </tr>
+                    
+                
+            </table> 
+            <br/>
+            
+            <a th:href="@{/guardar}" class="enlace">Nuevo Usuario</a>
+            <a th:href="@{/guardar1}" class="enlace" id="op2">Registrar Profesion</a>
+            <table border="0">
+                <tr class="encabezado">
+                     <th>Codigo Departamento</th> 
+                     <th>Nombre Departamento</th>
+                </tr>
+                <tr th:each="lugar : ${dep}">
+                     <td th:text="${lugar.id_depto}">Mostrar Codigo Departamento</td>
+                    <td th:text="${lugar.descripcion_depto}">Mostrar departamento</td>
+                </tr>
+          <table border="0" align="lefth" id="tblpro">
+                <tr class="encabezado">
+                     <th>Codigo Profesion</th> 
+                     <th>Profesiones</th>
+                      <th>Modificar</th>
+                     <th>Borrar</th>
+                </tr>
+                <tr th:each="pr : ${prof}">
+                     <td th:text="${pr.id_profesion}">Mostrar Codigo Profesion</td>
+                    <td th:text="${pr.descripcion_profesion}">Mostrar Profesiones</td>
+                    <td><a th:href="@{/editarP/} + ${pr.id_profesion}" class="enlace" id="op5">Edit</a></td>
+                    <td><a th:href="@{/eliminarP/} + ${pr.id_profesion}" class="enlace" id="op3">Del</a></td>
+                </tr>
+          <br/>
+       
+          
+    </body>
+    
+</html>

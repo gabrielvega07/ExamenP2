@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html  xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <title>Usuario</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        
+        <style>
+             body{font-family: Ebrima; font-size: 15px; text-align: center; 
+                  background-image: url(https://cdn.pixabay.com/photo/2021/06/24/04/34/star-6360169_960_720.png); 
+                  background-size: cover;
+                  background-repeat:no-repeat;
+                  background-position: center center;
+                  background-color: gainsboro;}
+              p{background-color:black; font-size: 23px;}
+             label{display: block; margin-bottom: 7.5px; margin-top: 7.5px; color:black; font-family: Arial Black;  }
+             .enlace { padding: 3px 20px; background:red; 
+                      border: 1px solid #1161B0; color: #fff;border-radius: 4px;
+                      text-decoration:none; border-color: #fff;  font-family: Ebrima;}
+             #return {margin-left: -230px; color: #fff;}
+             input{font-size: 17px;  text-align: center;}
+             select{ font-size: 17px; height: 28px; width: 222px; 
+                     text-align: center; color:black;
+                     background-color:white;  font-family: Ebrima;}
+             #boton{margin-top: 15px; height: 27px; width: 110px; 
+                    background-color: #1161B0; border: 1px solid #1161B0;
+                    border-radius: 4px; color: #fff;
+                    font-family: Ebrima; cursor: pointer; }
+        </style>
+        
+        
+         <h1>MODIFICAR</h1>
+        
+        <br/> 
+        <form  th:action="@{/add}" method="post" th:object="${usuario}">
+            
+            <input type="hidden" name="id_usuario"  th:field="*{id_usuario}"/>
+            
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" th:field="*{nombre}"/>
+            <br/>
+            
+            <label for="apellido">Apellido:</label>
+            <input type="text" name="apellido" th:field="*{apellido}"/>
+            <br/>
+            
+            <label for="id_depto">Departamento:</label>
+            <select th:field="*{id_depto}" name="id_depto" >
+            <option th:each="l : ${departamento}"
+                    th:value="${l.id_depto}"
+                    th:text="${l.id_depto} + ${separador} + ${l.descripcion_depto}"
+                     ></option>
+            </select><br/>
+            
+            <label for="id_profesion">Profesion:</label>
+            <select th:field="*{id_profesion}" name="id_profesion">
+            <option th:each="l : ${profesiones}" 
+                    th:value="${l.id_profesion}" 
+                    th:text= "${l.id_profesion} + ${separador} + ${l.descripcion_profesion}"
+                    ></option>
+            </select><br/> 
+            <label for="correo_electronico">Correo:</label>
+            <input type="email" name="correo_electronico" th:field="*{correo_electronico}"/>
+            <br/>
+            
+            <label for="telefono">Telefono:</label>
+            <input type="tel" name="telefono" th:field="*{telefono}"/>
+            <br/>
+            
+            <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
+            <input type="text" name="fecha_nacimiento" th:field="*{fecha_nacimiento}"/>
+            <br/>
+            
+            <label for="longitud">Longitud:</label>
+            <input type="text" name="longitud" th:field="*{longitud}"/>
+            <br/>
+            
+            <label for="latitud">Latitud:</label>
+            <input type="text" name="latitud" th:field="*{latitud}"/>
+            <br/>
+            
+            <label for="fecha_registro">Fecha Registro:</label>
+            <input type="text" name="fecha_registro" th:field="*{fecha_registro}"/>
+            <br/>
+            
+            <input type="submit" name="add" value="Guardar" id="boton"/>
+                    <a th:href="@{/}" class="enlace" id="return">Regresar</a>
+
+            
+        </form>
+    </body>
+</html>

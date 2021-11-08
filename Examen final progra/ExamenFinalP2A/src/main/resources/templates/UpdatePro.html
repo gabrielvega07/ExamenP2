@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html  xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <title>Modificar Profesion</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        
+        <style>
+            body{font-family: Ebrima; 
+                 font-size: 15px; text-align: center; 
+                 background-color: azure;}
+            p{background-color: white; 
+              font-size: 23px;}
+            label{display: block; 
+                  margin-bottom: 7.5px; 
+                  margin-top: 7.5px; 
+                  color: white; 
+                  font-family: Ebrima;  }
+            .enlace { padding: 3px 20px; 
+                      background: red; 
+                      border: 1px solid #1161B0; 
+                      color: #fff;
+                      border-radius: 4px;
+                      text-decoration:none; 
+                      border-color: black;  
+                      font-family: Amasis MT Pro Pro;}
+            #return {margin-left: -250px; 
+                     color: black;}
+            input{font-size: 17px;  
+                  text-align: center;}
+            #boton{margin-top: 15px; 
+                   height: 28px; 
+                   width: 120px; 
+                   background-color: aquamarine; 
+                   border: 1px solid #1161B0;
+                   border-radius: 4px; 
+                   font-family: Ebrima; 
+                   cursor: pointer; }
+        </style>
+        
+        
+        <h1> MODIFICAR PROFESIÓN </h1>
+        <br/> 
+        <form  th:action="@{/add1}" method="post" th:object="${profesion}">
+            <input type="hidden" name="id_profesion"  th:field="*{id_profesion}"/>
+
+            <label for="descripcion_profesion"> Ingresa la Profesion :</label>
+            <input type="text" name="descripcion_profesion" th:field="*{descripcion_profesion}"/>
+            <br/>
+            <input type="submit" name="guardar2" value="Guardar" id="boton"/>
+                    <a th:href="@{/}" class="enlace" id="return">Regresar</a>
+
+        </form>
+    </body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<html xmlns:th="https://www.thymeleaf.org" >
+    <head>
+        <title>GUARDAR USUARIO</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        
+        <style>
+             body{font-family: Ebrima; font-size: 15px; text-align: center;
+                  
+                  background-image: url(https://cdn.pixabay.com/photo/2020/09/23/19/58/halloween-5596921_960_720.jpg); 
+                  background-size: cover;
+                  background-repeat:no-repeat;
+                  background-position: center center;
+                  background-color: aquamarine;}
+             p{background-color: white; 
+               font-size: calc;}
+             label{display: block; 
+                   margin-bottom: 7.5px; 
+                   margin-top: 7.5px; 
+                   color: #fff; 
+                   font-family:Ebrima;}
+             .enlace { padding: 3px 20px; 
+                       background: red; 
+                       border: 1px solid #1161B0; 
+                       color: #fff;border-radius: 4px;
+                       text-decoration:none; 
+                       border-color: black;  
+                       font-family: Ebrima;}
+             #return {margin-left: 0px;}
+             input{font-size: 17px;  
+                   text-align:center;}
+             select{ font-size: 17px; height: 28px; width: 222px; text-align: left; 
+                     background-color:  #fff;  font-family: Ebrima;}
+             #boton{margin-top: 15px; height: 27px; width: 120px; background-color: #3498DB;
+                    border-radius: 4px;color: #fff;
+                    border: 1px solid #1161B0; font-family: Ebrima; cursor: pointer; }
+        </style>
+        
+        
+        <h1 style="color: #fff";>INSERTAR INFORMCACION DEL USUARIO</h1>
+        <!--<p> ️️</p>-->
+       
+       
+        <br/>
+        <form  th:action="@{/guardar}" method="post" th:object="${usuario}">
+            
+            <input type="hidden" name="id_usuario"  :field="*{id_usuario}"/>
+            
+             <div class="contenedor">
+            <label for="nombre"; >Nombre:</label>
+            <input type="text" name="nombre" :field="*{nombre}"/>
+            <br/>
+            
+            <label for="apellido">Apellido:</label>
+            <input type="text" name="apellido" :field="*{apellido}"/>
+            <br/>
+            
+            <label for="id_depto">Departamento:</label>
+            <select :field="*{id_depto}" name="id_depto" >
+            <option th:each="lur : ${dep}" 
+                    th:value="${lur.id_depto}"
+                    th:text="${lur.id_depto} + ${separador} + ${lur.descripcion_depto}"
+                     ></option>
+            </select><br/>
+            
+            <label for="id_profesion">Profesion:</label>
+            <select :field="*{id_profesion}" name="id_profesion">
+            <option th:each="pr : ${rof}" 
+                    th:value="${pr.id_profesion}" 
+                    th:text= " ${pr.id_profesion}  + ${separador} + ${pr.descripcion_profesion}"
+                    ></option>
+            </select><br/> 
+            <label for="correo_electronico">Electronico:</label>
+            <input type="email" name="correo_electronico" :field="*{correo_electronico}"/>
+            <br/>
+            
+            <label for="telefono">Telefono:</label>
+            <input type="tel" name="telefono" :field="*{telefono}"/>
+            <br/>
+            
+            <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
+            <input type="text" name="fecha_nacimiento" :field="*{fecha_nacimiento}"/>
+            <br/>
+            
+            <label for="longitud">Longitud:</label>
+            <input type="text" name="longitud" :field="*{longitud}"/>
+            <br/>
+            
+            <label for="latitud">Latitud:</label>
+            <input type="text" name="latitud" :field="*{latitud}"/>
+            <br/>
+            
+            <label for="fecha_registro">Fecha Registro:</label>
+            <input type="text" name="fecha_registro" :field="*{fecha_registro}"/>
+            <br/>
+            
+                    <a th:href="@{/}" class="enlace" id="return">Regresar</a>
+                         <input type="submit" name="guardar" value="Guardar" id="boton"/>
+            </div>
+
+
+
+        </form>
+    </body>
+</html>

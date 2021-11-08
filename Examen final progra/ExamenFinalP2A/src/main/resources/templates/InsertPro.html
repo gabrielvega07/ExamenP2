@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <title>AGREGAR PROFESION</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <p>Nueva Profesión️️</p>
+        <br/>
+        
+        <form  th:action="@{/guardarP}" method="post" th:object="${profesion}">
+            
+            <input type="hidden" name="id_profesion"  :field="*{id_profesion}"/>
+            
+            <label for="descripcion_profesion"> Ingresa la Nueva Profesion :</label>
+            <input type="text" name="descripcion_profesion" :field="*{descripcion_profesion}"/>
+            <br/>
+            <a th:href="@{/}" class="enlace" id="return">Regresar</a>
+             <input type="submit" name="guardar2" value="Guardar" id="boton"/>
+            
+             <style>
+            body{font-family: Wide Latin;color: #fff; font-size: 20px; text-align: center; 
+                 background-image: url(https://cdn.pixabay.com/photo/2016/11/19/14/00/code-1839406_960_720.jpg); 
+                  background-size: cover;
+                  background-repeat:no-repeat;
+                  background-position: center center;
+                  background-color:  #fff ;}
+             h1{background-color:  #fff; color: white;}
+             p{font-size: 83px;}
+             label{display: block; 
+                   margin-bottom: 7.5px; 
+                   margin-top: 7.5px; 
+                   color: white; 
+                   font-family: Ebrima;}
+             #boton{ color: white; 
+                     margin-top: 5px; 
+                     height: 35px; 
+                     width: 120px; 
+                     background-color: #14DF6A; 
+                     border: 1px solid #1161B0; 
+                     font-family: Ebrima;
+                     border-radius: 4px; 
+                     cursor: pointer; }
+             .enlace { padding: 3px 20px; 
+                       background: red; 
+                       border: 1px solid #1161B0; 
+                       color: #fff;
+                       border-radius: 4px;
+                       text-decoration:none; 
+                       border-color: black;  
+                       font-family: Ebrima;}
+            input{font-size: 17px;  text-align: center;}
+        </style>
+        </form>
+    </body>
+</html>
